@@ -1,8 +1,3 @@
----
-name: Pull Request
-about: Pull Request template
----
-
 ## Description
 
 #### Issue
