@@ -1,6 +1,14 @@
 import { setAStateProp } from "store/actions";
 //import store from "../../../store";
 
+/**
+ * Set the shoe's color.
+ * @async
+ * @function sampleFetch
+ * @param {Object} [payload] - payload should be a JSON obj to be passed as the
+ *   body of of the GET.
+ * @throws {Error} on failed response
+ */
 export const sampleFetch = (payload) => {
   let bodyJSON = payload ? payload : {};
   return (dispatch) => {

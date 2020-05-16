@@ -1,3 +1,10 @@
+/**
+ * @module TicTacToe
+ * @description A module that builds a TicTacToe game.
+ * @exports TicTacToe
+ * @author Kai
+ * @version 1.2.3
+ */
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -166,9 +173,14 @@ export const getWinningPaths = (width) => {
 };
 
 /**
-  This algorithm is checking all the possible ways to score
-  three in a row and seeing if 3 in row exists.
-**/
+ * @function isWinner
+ * @description This algorithm is checking all the possible ways to score
+ * three in a row and seeing if 3 in row exists.
+ * @param {Array} squares - description
+ * @param {@link width} width - the WIDTH
+ * *
+ * @returns {(string|null)} The player's name if there is a winner, otherwise null.
+ */
 export const isWinner = (squares, width) => {
   const winningPaths = getWinningPaths(width);
   if (!winningPaths.length) {
@@ -195,6 +207,12 @@ export const isWinner = (squares, width) => {
   return null;
 };
 
+/**
+ * Represents a book.
+ * @constructor
+ * @param {string} title - The title of the book.
+ * @param {string} author - The author of the book.
+ */
 export const TicTacToe = ({
   history,
   turnNumber,
@@ -207,10 +225,32 @@ export const TicTacToe = ({
   clearCurrentPlayer
   //intl
 }) => {
+  /**
+   * @const player1 - Player one's name. ()
+   * @type {string}
+   * @default
+   */
   const player1 = constants.PLAYER_1;
+  /**
+   *  *
+   * *
+   * */
   const player2 = constants.PLAYER_2;
+
+  /**
+   * @const width - Dimensions of the board
+   * @typedef {number} width
+   * @type {number}
+   * @default 3
+   */
   const width = constants.WIDTH;
 
+  /**
+   * @function handleClick - Handle a square being clicked.
+   * @callback onClick
+   * @param {number} i - ...
+   * @param {@link width} [width] - TODO passed constant oops remove Number of squares per side of the board
+   */
   let handleClick = (i, width) => {
     history = history.slice(0, turnNumber + 1);
     const current = history[history.length - 1];
@@ -275,10 +315,24 @@ export const TicTacToe = ({
   );
 };
 
+/**
+ * @property {string} name - What the food should be called
+ * @property {('meat' | 'veggie' | 'other')} type - The food's type
+ */
+/**
+ * @typedef {Object} TicTacToe
+ *
+ * @property {Object[]} history - An array of boards
+ * * ({@link width} by {@link width} array of {@link history.squares})
+ * @typedef {('X'|'O'|null)} PlayerName - the player's name
+ * @property {PlayerName[]} history.squares - an array of the square's contents
+ * @property {string} history.player - The current player for that turn
+ */
 TicTacToe.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.shape({
-      squares: PropTypes.array.isRequired
+      squares: PropTypes.array.isRequired,
+      player: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
   turnNumber: PropTypes.number.isRequired,
