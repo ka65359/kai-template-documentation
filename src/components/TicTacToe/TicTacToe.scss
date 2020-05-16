@@ -1,0 +1,52 @@
+.kai-tictactoepage {
+  font: 14px "Century Gothic", "Futura", sans-serif;
+  margin: 20px;
+}
+
+.kai-tictactoepage ol,
+.kai-tictactoepage ul {
+  padding-left: 30px;
+  list-style-type: none;
+}
+
+.kai-tictactoepage .board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.kai-tictactoepage .status {
+  margin-bottom: 10px;
+}
+
+.kai-tictactoepage .square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.kai-tictactoepage .square:focus {
+  outline: none;
+}
+
+.kai-tictactoepage .kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.kai-tictactoepage .game {
+  display: flex;
+  flex-direction: row;
+}
+
+.kai-tictactoepage .game-info {
+  margin-left: 20px;
+}

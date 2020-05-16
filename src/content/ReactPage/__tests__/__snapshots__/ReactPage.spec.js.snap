@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReactPage() tests should render correctly in mode 1`] = `ShallowWrapper {}`;
