@@ -1,5 +1,5 @@
 const FLAG_DEFAULTS = {
-  useSomeNewFeature: false
+  connect4: false
 };
 
 export default new (class {
