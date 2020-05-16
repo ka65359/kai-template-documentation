@@ -94,7 +94,7 @@ export const getWinningPaths = (width) => {
   }
   let paths = [];
 
-  const getRowPaths = (width) => {
+  const getRowPaths = () => {
     /*
       // TODO: tests
       width = 3
@@ -107,14 +107,14 @@ export const getWinningPaths = (width) => {
     for (let row = 0; row < width; row++) {
       currPath = [];
       for (let col = 0; col < width; col++) {
-        currPath.push(row * 3 + col);
+        currPath.push(row * width + col);
       }
       paths.push(currPath);
     }
     return paths;
   };
 
-  const getColumnPaths = (width) => {
+  const getColumnPaths = () => {
     /*
       // TODO: tests
       width = 3
@@ -134,17 +134,18 @@ export const getWinningPaths = (width) => {
     return paths;
   };
 
-  const getDiagonalPaths = (width) => {
+  const getDiagonalPaths = () => {
     /*
       // TODO: tests
       width = 3
       [0, 4, 8],
       [2, 4, 6]
+      0,5,10,15
     */
     let paths = [];
     let currPath = [];
     for (let i = 0; i < width; i++) {
-      currPath.push(i * (width - 1) + i);
+      currPath.push(i * (width + 1));
     }
     paths.push(currPath);
     currPath = [];
@@ -156,11 +157,11 @@ export const getWinningPaths = (width) => {
   };
 
   // a full row is a win
-  paths = getRowPaths(width);
+  paths = getRowPaths();
   // a full column is a win
-  paths = paths.concat(getColumnPaths(width));
+  paths = paths.concat(getColumnPaths());
   // a diagonal line is a win
-  paths = paths.concat(getDiagonalPaths(width));
+  paths = paths.concat(getDiagonalPaths());
   return paths;
 };
 
@@ -169,12 +170,27 @@ export const getWinningPaths = (width) => {
   three in a row and seeing if 3 in row exists.
 **/
 export const isWinner = (squares, width) => {
-  let winningPaths = getWinningPaths(width);
+  const winningPaths = getWinningPaths(width);
+  if (!winningPaths.length) {
+    return null;
+  }
+  let currPath = [];
+  let win = false;
   for (let i = 0; i < winningPaths.length; i++) {
-    const [a, b, c] = winningPaths[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+    currPath = winningPaths[i];
+    win = true;
+    for (let j = 0; j < currPath.length; j++) {
+      if (squares[currPath[0]] !== squares[currPath[j]]) {
+        win = false;
+        break;
+      }
     }
+    if (win) {
+      break;
+    }
+  }
+  if (win) {
+    return squares[currPath[0]];
   }
   return null;
 };

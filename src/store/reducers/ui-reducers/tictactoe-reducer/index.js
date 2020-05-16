@@ -13,7 +13,7 @@ export const initialState = {
   currentPlayer: constants.PLAYER_1,
   history: [
     {
-      squares: Array(9).fill(null),
+      squares: Array(constants.WIDTH * constants.WIDTH).fill(null),
       player: constants.PLAYER_1
     }
   ],

@@ -1,4 +1,6 @@
 import React from "react";
+import * as constants from "../../constants/tictactoe";
+
 const Square = ({ onClick, value }) => {
   return (
     <button className="square" onClick={onClick}>
@@ -8,29 +10,36 @@ const Square = ({ onClick, value }) => {
 };
 
 const TicTacToeBoard = ({ squares, onClick }) => {
+  const width = constants.WIDTH;
   const renderSquare = (i) => {
     return <Square value={squares[i]} onClick={() => onClick(i)} />;
   };
 
-  return (
-    <div>
+  const buildRow = (startPos) => {
+    return (
       <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
+        {Array(constants.WIDTH)
+          .fill(null)
+          .map((item, index) => {
+            return renderSquare(startPos + index);
+          })}
       </div>
-      <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
+    );
+  };
+
+  const buildBoard = () => {
+    return (
+      <div>
+        {Array(constants.WIDTH)
+          .fill(null)
+          .map((item, index) => {
+            return buildRow(width * index);
+          })}
       </div>
-      <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
-      </div>
-    </div>
-  );
+    );
+  };
+
+  return <div>{buildBoard()}</div>;
 };
 
 export default TicTacToeBoard;
