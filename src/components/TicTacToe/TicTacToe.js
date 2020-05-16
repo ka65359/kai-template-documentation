@@ -4,11 +4,27 @@
  * @exports TicTacToe
  * @author Kai
  * @version 1.2.3
+ *
+ * @typedef {Object} TicTacToe
+ *
+ * @property {Object[]} history - An array of boards
+ *  ({@link width} by {width} array of {history.squares})
+ * @typedef {('X'|'O'|null)} PlayerName - the player's name
+ * @property {PlayerName[]} history.squares - an array of the square's contents
+ * @property {string} history.player - The current player for that turn
+ * @property {string} currentPlayer - The name of the player who's turn it is
+ * @property {function} setGameHistory - Update the game history with a new turn's board
+ * @property {function} setTurnNumber - Update the turn count
+ * @property {function} setCurrentPlayer - Change the current player
+ * @property {function} clearGameHistory - Reset game history
+ * @property {function} clearTurnNumber - Set turn count back to 0
+ * @property {function} clearCurrentPlayer - Reset player back to default
  */
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { compose, lifecycle, pure, withState, withHandlers } from "recompose";
+import { object, text, number } from "@storybook/addon-knobs";
 import {
   setGameHistory,
   setTurnNumber,
@@ -207,12 +223,6 @@ export const isWinner = (squares, width) => {
   return null;
 };
 
-/**
- * Represents a book.
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
- */
 export const TicTacToe = ({
   history,
   turnNumber,
@@ -226,27 +236,27 @@ export const TicTacToe = ({
   //intl
 }) => {
   /**
-   * @const player1 - Player one's name. ()
+   * @const player1 - Player one's name
    * @type {string}
-   * @default
+   * @default X
    */
-  const player1 = constants.PLAYER_1;
+  const player1 = text("Player 1", constants.PLAYER_1);
   /**
-   *  *
-   * *
-   * */
-  const player2 = constants.PLAYER_2;
-
+   * @const player2 - Player two's name
+   * @type {string}
+   * @default O
+   */
+  const player2 = text("Player 2", constants.PLAYER_2);
   /**
    * @const width - Dimensions of the board
    * @typedef {number} width
    * @type {number}
    * @default 3
    */
-  const width = constants.WIDTH;
+  const width = number("width", constants.WIDTH);
 
   /**
-   * @function handleClick - Handle a square being clicked.
+   * @function handleClick - Handle a square being clicked
    * @callback onClick
    * @param {number} i - ...
    * @param {@link width} [width] - TODO passed constant oops remove Number of squares per side of the board
@@ -279,7 +289,7 @@ export const TicTacToe = ({
     }
   };
 
-  const current = history[turnNumber];
+  const current = object("current board", history[turnNumber]);
   const winner = isWinner(current.squares, width);
   const moves = history.map((step, move) => {
     const desc = move ? "Go to move #" + move : "Restart";
@@ -296,11 +306,11 @@ export const TicTacToe = ({
   if (winner) {
     status = "Winner: " + winner;
   } else {
-    status = "Next player: " + currentPlayer;
+    status = "Next player: " + text("currentPlayer", currentPlayer);
   }
 
   return (
-    <div className="game">
+    <div className="kai-tictactoe-game game">
       <div className="game-board">
         <TicTacToeBoard
           squares={current.squares}
@@ -308,22 +318,13 @@ export const TicTacToe = ({
         />
       </div>
       <div className="game-info">
-        <div>{status}</div>
+        <div>{text("status", status)}</div>
         <ol>{moves}</ol>
       </div>
     </div>
   );
 };
 
-/**
- * @typedef {Object} TicTacToe
- *
- * @property {Object[]} history - An array of boards
- *  ({@link width} by {@link width} array of {@link history.squares})
- * @typedef {('X'|'O'|null)} PlayerName - the player's name
- * @property {PlayerName[]} history.squares - an array of the square's contents
- * @property {string} history.player - The current player for that turn
- */
 TicTacToe.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.shape({
@@ -343,4 +344,5 @@ TicTacToe.propTypes = {
 };
 
 //export default injectIntl(enhance(TicTacToe));
+export const StorybookTicTacToe = TicTacToe;
 export default enhance(TicTacToe);

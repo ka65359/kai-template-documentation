@@ -1,25 +1,25 @@
-.kai-tictactoepage {
+.kai-tictactoe-game {
   font: 14px "Century Gothic", "Futura", sans-serif;
   margin: 20px;
 }
 
-.kai-tictactoepage ol,
-.kai-tictactoepage ul {
+.kai-tictactoe-game ol,
+.kai-tictactoe-game ul {
   padding-left: 30px;
   list-style-type: none;
 }
 
-.kai-tictactoepage .board-row:after {
+.kai-tictactoe-game .board-row:after {
   clear: both;
   content: "";
   display: table;
 }
 
-.kai-tictactoepage .status {
+.kai-tictactoe-game .status {
   margin-bottom: 10px;
 }
 
-.kai-tictactoepage .square {
+.kai-tictactoe-game .square {
   background: #fff;
   border: 1px solid #999;
   float: left;
@@ -34,19 +34,19 @@
   width: 34px;
 }
 
-.kai-tictactoepage .square:focus {
+.kai-tictactoe-game .square:focus {
   outline: none;
 }
 
-.kai-tictactoepage .kbd-navigation .square:focus {
+.kai-tictactoe-game .kbd-navigation .square:focus {
   background: #ddd;
 }
 
-.kai-tictactoepage .game {
+.kai-tictactoe-game.game {
   display: flex;
   flex-direction: row;
 }
 
-.kai-tictactoepage .game-info {
+.kai-tictactoe-game .game-info {
   margin-left: 20px;
 }
