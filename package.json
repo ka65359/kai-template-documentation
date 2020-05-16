@@ -44,15 +44,16 @@
     "validate": "npm audit",
     "postinstall": "link-module-alias",
     "storybook": "start-storybook -p 4444 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook:build": "build-storybook -s public",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "scripts-info": {
     "recover-commit": "If your staged files disappeared on a failed commit attempt, try this",
     "scripts": "Display information about the scripts",
-    "start:app": "Start the application",
-    "start:server": "Start the server",
+    "start:app": "Start the application on port 4001",
+    "start:server": "Start the server on port 4400",
     "start": "Start the application and the server",
-    "storybook": "Start storybook on port 4444",
     "format": "Format the code to lmatch existing code style",
     "lint": "Check for linter errors",
     "lint:formatted": "Format your code and then check for linter errors",
@@ -63,7 +64,9 @@
     "test:log-debug": "Runs all tests and coverage in watch mode in highest debug level, will print console.log statements. Open chrome://inspect in a browser to set breakpoints",
     "test:update-snapshots": "Update jest snapshots for failing tests",
     "test:watch": "Run jest continuously as changes are saved",
-    "validate": "Check for improperly installed dependencies"
+    "validate": "Check for improperly installed dependencies",
+    "storybook": "Start storybook on port 4444",
+    "styleguide": "Start styleguide on port 4445"
   },
   "_moduleAliases": {
     "constants": "src/constants",
@@ -152,8 +155,11 @@
     "pino-colada": "^1.4.5",
     "prettier": "^1.17.0",
     "prop-types": "^15.7.2",
+    "react-styleguidist": "^11.0.6",
     "redux-immutable-state-invariant": "2.1.0",
     "redux-mock-store": "1.5.4",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
     "stylelint": "^13.3.3",
     "typescript": "^3.8.2",
     "webpack": "^4.0.0"
