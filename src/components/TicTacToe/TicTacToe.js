@@ -316,14 +316,10 @@ export const TicTacToe = ({
 };
 
 /**
- * @property {string} name - What the food should be called
- * @property {('meat' | 'veggie' | 'other')} type - The food's type
- */
-/**
  * @typedef {Object} TicTacToe
  *
  * @property {Object[]} history - An array of boards
- * * ({@link width} by {@link width} array of {@link history.squares})
+ *  ({@link width} by {@link width} array of {@link history.squares})
  * @typedef {('X'|'O'|null)} PlayerName - the player's name
  * @property {PlayerName[]} history.squares - an array of the square's contents
  * @property {string} history.player - The current player for that turn

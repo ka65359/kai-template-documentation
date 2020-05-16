@@ -1,7 +1,29 @@
+/**
+ * @module Task
+ * @exports Task
+ * @description A module that builds a Task widget.
+ * @author Kai
+ * @version 1.0.0
+ */
 import React from "react";
 import PropTypes from "prop-types";
 
+/**
+ * @typedef {Object} Task
+ *
+ * @property {Object} task - Task specific details
+ * @property {string} task.id - Task ID
+ * @property {string} task.title - Task description
+ * @property {string} task.state - Task state (checked or unchecked)
+ * @property {function} onArchiveTask - Callback of what happens when a task is archived
+ * @property {function} onPinTask - Callback of what happens when a task is pinned
+ */
 const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
+  /**
+   * Build the Task HTML (if it isn't archived).
+   *
+   * @method buildCurrentTasks
+   */
   const buildCurrentTasks = () => {
     if (state !== "TASK_ARCHIVED") {
       return (
@@ -11,6 +33,7 @@ const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
       );
     }
   };
+
   return (
     <div className={`list-item ${state}`}>
       <label className="checkbox">
