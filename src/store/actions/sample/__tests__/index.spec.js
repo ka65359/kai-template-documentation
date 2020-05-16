@@ -44,7 +44,7 @@ describe("sample actions tests", function() {
           expect(err).toBeFalsey();
         })
         .catch(() => {
-          expect(dispatch).not.toHaveBeenCalled();
+          expect(dispatch).toHaveBeenCalled();
           done();
         });
     });
@@ -74,7 +74,7 @@ describe("sample actions tests", function() {
       expect(rslt).toBeInstanceOf(Promise);
       rslt
         .then(() => {
-          // expect(someFunc).toHaveBeenCalled();
+          expect(dispatch).toHaveBeenCalled();
           done();
         })
         .catch((err) => {
