@@ -8,8 +8,9 @@
 #### Performance
 - Avoid using `cloneDeep` unless you absolutely need it, and then only on a small dataset. Never something as large as the entire `state` object
 - Don't update the DOM without using `React` methods. Never use `document.createElement()` and DOM manipulation like setting `document.getElementById("someID")`'s `innerHTML` or `appendChild()`. Use `ReactDOM.render()` or a function returning a JSX element instead. DOM's created outside of React's context are not garbage collected!
+    - Render 7 divs:
     - `const buildDiv = (content) => { return (<div>{content}</div>); };`
-    - `return (<div>{Array(7).fill(null).map((item, index) => { buildDiv(index); }); }</div>); // render 7 divs`
+    - `return (<div>{ Array(7).fill(null).map((item, index) => { buildDiv(index); }); }</div>);`
 - Only use state/eventListeners in component `lifecycle` functions. Every listener should be added in `componentWillMount()` and removed in `componentWillUnmount()` to avoid duplicated and memory leaks from non-garbage collected listeners
 
 #### General
