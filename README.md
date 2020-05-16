@@ -10,3 +10,4 @@ Simple project template with samples of:
 - Test support (`jest`)
 - Store and state management (`react-redux`)
 - Component documentation (`storybook`)
+- Javascript documentation (`jsdoc`, `docdash`)
