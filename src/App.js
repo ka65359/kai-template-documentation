@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import ReactPage from "./content/ReactPage";
+//import ReactPage from "./content/ReactPage";
+import TicTacToePage from "./content/TicTacToePage";
 import "./app.scss";
 //import { Content } from 'carbon-components-react/lib/components/UIShell';
 //import { Route, Switch } from 'react-router-dom';
@@ -13,11 +14,14 @@ import "./app.scss";
   </Switch>
 </Content>
 */
+/**
+ * @class App - Contains the actual content
+ * */
 class App extends Component {
   render() {
     return (
       <>
-        <ReactPage />
+        <TicTacToePage />
       </>
     );
   }
