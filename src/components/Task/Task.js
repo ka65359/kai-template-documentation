@@ -7,6 +7,7 @@
  */
 import React from "react";
 import PropTypes from "prop-types";
+import { text, boolean } from "@storybook/addon-knobs";
 
 /**
  * @typedef {Object} Task
@@ -27,7 +28,7 @@ const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
   const buildCurrentTasks = () => {
     if (state !== "TASK_ARCHIVED") {
       return (
-        <a onClick={() => onPinTask(id)}>
+        <a href onClick={() => onPinTask(id)}>
           <span className={`icon-star`} />
         </a>
       );
@@ -39,8 +40,8 @@ const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
       <label className="checkbox">
         <input
           type="checkbox"
-          defaultChecked={state === "TASK_ARCHIVED"}
-          disabled={true}
+          defaultChecked={boolean("defaultChecked", state === "TASK_ARCHIVED")}
+          disabled={boolean("disabled", true)}
           name="checked"
         />
         <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
@@ -48,9 +49,9 @@ const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
       <div className="title">
         <input
           type="text"
-          value={title}
-          readOnly={true}
-          placeholder="Input title"
+          value={text("title", title)}
+          readOnly={boolean("readOnly", true)}
+          placeholder={text("placeholder", "Input title")}
         />
       </div>
 
