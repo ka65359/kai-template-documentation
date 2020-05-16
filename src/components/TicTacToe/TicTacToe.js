@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { compose, lifecycle, pure, withState, withHandlers } from "recompose";
 import {
@@ -10,7 +11,6 @@ import {
   clearCurrentPlayer
 } from "store/actions";
 import * as constants from "../../constants/tictactoe";
-// TODO: A loader
 import TicTacToeBoard from "./TicTacToeBoard";
 import "./TicTacToe.scss";
 
@@ -273,6 +273,23 @@ export const TicTacToe = ({
       </div>
     </div>
   );
+};
+
+TicTacToe.propTypes = {
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      squares: PropTypes.array.isRequired
+    }).isRequired
+  ).isRequired,
+  turnNumber: PropTypes.number.isRequired,
+  currentPlayer: PropTypes.string.isRequired,
+  setGameHistory: PropTypes.func.isRequired,
+  setTurnNumber: PropTypes.func.isRequired,
+  setCurrentPlayer: PropTypes.func.isRequired,
+  clearGameHistory: PropTypes.func.isRequired,
+  clearTurnNumber: PropTypes.func.isRequired,
+  clearCurrentPlayer: PropTypes.func.isRequired
+  //intl
 };
 
 //export default injectIntl(enhance(TicTacToe));

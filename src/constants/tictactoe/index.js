@@ -1,5 +1,5 @@
 module.exports = Object.freeze({
-  WIDTH: 3,
+  WIDTH: 4,
   PLAYER_1: "X",
   PLAYER_2: "O"
 });

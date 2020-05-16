@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as constants from "../../constants/tictactoe";
 
 const Square = ({ onClick, value }) => {
@@ -7,6 +8,11 @@ const Square = ({ onClick, value }) => {
       {value}
     </button>
   );
+};
+
+Square.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 const TicTacToeBoard = ({ squares, onClick }) => {
@@ -40,6 +46,11 @@ const TicTacToeBoard = ({ squares, onClick }) => {
   };
 
   return <div>{buildBoard()}</div>;
+};
+
+TicTacToeBoard.propTypes = {
+  squares: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default TicTacToeBoard;
