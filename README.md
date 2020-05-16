@@ -1,4 +1,4 @@
-# kai-template-storybook
+# kai-template-documentation
 
 Simple project template with samples of:
 - Basic web application (`react`)
