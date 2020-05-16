@@ -1,7 +1,7 @@
 {
   "name": "kai-template-storybook",
   "version": "1.0.0",
-  "description": "Kai's Project Template with linting/formatting, jest, redux, and storybook examples",
+  "description": "Kai's Project Template with linting/formatting, jest, redux, and docdash/storybook examples",
   "repository": {
     "type": "git",
     "url": "https://github.com/ka65359/kai-template-storybook.git"
@@ -43,8 +43,9 @@
     "test:watch": "jest --config=jest.config.js --watch --silent --verbose",
     "validate": "npm audit",
     "postinstall": "link-module-alias",
+    "docs:build": "node_modules/.bin/jsdoc -c jsdoc.json",
     "storybook": "start-storybook -p 4444 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook:build": "build-storybook -s public"
   },
   "scripts-info": {
     "recover-commit": "If your staged files disappeared on a failed commit attempt, try this",
@@ -52,7 +53,6 @@
     "start:app": "Start the application",
     "start:server": "Start the server",
     "start": "Start the application and the server",
-    "storybook": "Start storybook on port 4444",
     "format": "Format the code to lmatch existing code style",
     "lint": "Check for linter errors",
     "lint:formatted": "Format your code and then check for linter errors",
@@ -63,7 +63,10 @@
     "test:log-debug": "Runs all tests and coverage in watch mode in highest debug level, will print console.log statements. Open chrome://inspect in a browser to set breakpoints",
     "test:update-snapshots": "Update jest snapshots for failing tests",
     "test:watch": "Run jest continuously as changes are saved",
-    "validate": "Check for improperly installed dependencies"
+    "validate": "Check for improperly installed dependencies",
+    "docs:build": "Generate JSDoc files. View them at /docs on the API port. (Ex. localhost:4400/docs)",
+    "storybook": "Start storybook on port 4444 (configured in script above)",
+    "storybook:build": "Rebuild storybook files"
   },
   "_moduleAliases": {
     "constants": "src/constants",
@@ -89,7 +92,7 @@
     ],
     "*.+(css|scss)": [
       "prettier --write",
-      "stylelint"
+      "stylelint --allow-empty-input"
     ]
   },
   "browserslist": [
@@ -125,6 +128,7 @@
     "babel-loader": "8.1.0",
     "bili": "4.10.0",
     "body-parser": "^1.19.0",
+    "docdash": "^1.2.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "1.15.2",
     "enzyme-to-json": "^3.4.4",
@@ -141,9 +145,9 @@
     "handlebars": "4.7.6",
     "husky": "^4.2.5",
     "jest": "^24.9.0",
+    "jsdoc": "^3.6.4",
     "link-module-alias": "^1.2.0",
     "lint-staged": "^10.2.2",
-    "mem": "^6.1.0",
     "node-env-run": "^3.0.2",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.3",

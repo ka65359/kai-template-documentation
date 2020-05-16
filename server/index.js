@@ -6,6 +6,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
 
+// Make our docs available
+app.use("/docs", express.static("docs"));
+
 // Make public dir available on server
 app.use("/public", express.static("public"));
 
