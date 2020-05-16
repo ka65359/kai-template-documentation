@@ -1,0 +1,42 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": "src/",
+    "includePattern": "\\.js$",
+    "excludePattern": "(node_modules/|docs/|__tests__/|core/|stories/)"
+  },
+  "plugins": ["plugins/markdown"],
+  "meta": {
+    "title": "Kai's Project Template for docdash/storybook",
+    "description": "Simple project template with linting/formatting, jest, redux, and docdash/storybook examples",
+    "keyword": "jsdoc, docdash, storybook, redux, react, lint, prettier, jest"
+  },
+  "menu": {
+    "Github repo": {
+      "href": "https://github.com/ka65359/kai-template-storybook",
+      "target": "_blank",
+      "class": "menu-item",
+      "id": "repository"
+    }
+  },
+  "opts": {
+    "static": true,
+    "sort": true,
+    "disqus": "",
+    "search": true,
+    "collapse": true,
+    "typedefs": true,
+    "removeQuotes": "none",
+    "template": "node_modules/docdash",
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  }
+}
