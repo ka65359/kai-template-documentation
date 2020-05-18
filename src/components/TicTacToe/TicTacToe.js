@@ -289,8 +289,8 @@ export const TicTacToe = ({
     }
   };
 
-  const current = object("current board", history[turnNumber]);
-  const winner = isWinner(current.squares, width);
+  const current = history[turnNumber];
+  const winner = isWinner(object("current board", current.squares), width);
   const moves = history.map((step, move) => {
     const desc = move ? "Go to move #" + move : "Restart";
     return (
