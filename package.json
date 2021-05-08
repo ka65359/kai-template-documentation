@@ -145,7 +145,7 @@
     "express": "^4.17.1",
     "express-pino-logger": "^4.0.0",
     "fetch-mock": "7.3.0",
-    "handlebars": "4.7.6",
+    "handlebars": "4.7.7",
     "husky": "^4.2.5",
     "jest": "^24.9.0",
     "jsdoc": "^3.6.4",
